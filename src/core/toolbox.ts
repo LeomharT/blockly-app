@@ -6,7 +6,7 @@ export const toolbox: Blockly.BlocklyOptions['toolbox'] = {
     {
       kind: 'category',
       colour: '290',
-      name: 'Category1',
+      name: 'Sprites',
       cssconfig: { icon: 'fa-brands fa-codepen' },
       contents: [
         { kind: 'label', text: 'Logic' },
