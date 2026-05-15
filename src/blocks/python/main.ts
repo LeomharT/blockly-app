@@ -5,6 +5,8 @@ Blockly.Blocks['__main__'] = {
     this.appendDummyInput().appendField(`if __name__ == "__main__"`);
     this.appendStatementInput('__main__').setCheck(null);
     this.setInputsInline(true);
+    this.setDeletable(false);
+    this.setEditable(false);
     this.setColour('#FFBF00');
   },
 };

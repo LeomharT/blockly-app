@@ -1,3 +1,5 @@
+import { CustomCategory } from '@/core/category';
+import { toolbox } from '@/core/toolbox';
 import * as Blockly from 'blockly';
 import { pythonGenerator } from 'blockly/python';
 import { useEffect } from 'react';
@@ -36,26 +38,12 @@ export default function App() {
     // Register the definition.
     Blockly.common.defineBlocks(definitions);
 
-    const toolbox: Blockly.BlocklyOptions['toolbox'] = {
-      kind: 'categoryToolbox',
-      contents: [
-        {
-          kind: 'category',
-          colour: '290',
-          name: 'Control',
-          contents: [
-            {
-              kind: 'block',
-              type: 'my_custom_block',
-            },
-            {
-              kind: 'block',
-              type: '__main__',
-            },
-          ],
-        },
-      ],
-    };
+    Blockly.registry.register(
+      Blockly.registry.Type.TOOLBOX_ITEM,
+      Blockly.ToolboxCategory.registrationName,
+      CustomCategory,
+      true,
+    );
 
     const workspace = Blockly.inject('blocklyDiv', {
       toolbox,
@@ -91,5 +79,5 @@ export default function App() {
     };
   }, []);
 
-  return <div id='blocklyDiv' className='h-screen'></div>;
+  return <div id='blocklyDiv' className='h-dvh'></div>;
 }

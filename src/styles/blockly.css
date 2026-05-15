@@ -1,0 +1,16 @@
+/*
+ * Custom Blockly styles for overriding and extending the default Blockly UI.
+ * Use this file for project-specific Blockly styling only.
+ */
+
+svg[display='none'] {
+  display: none;
+}
+
+.blocklyWidgetDiv .blocklyMenu {
+  overflow: hidden;
+}
+
+.blocklyToolbox {
+  width: 200px;
+}
