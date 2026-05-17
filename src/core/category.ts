@@ -22,7 +22,7 @@ export class CustomCategory extends Blockly.ToolboxCategory {
   /** @override */
   protected makeDefaultCssConfig_(): Blockly.ToolboxCategory.CssConfig {
     const className = clsx(
-      'aria-selected:text-[#FEF3E0] aria-selected:[&_svg]:text-[#FEF3E0]!',
+      'aria-selected:text-[#FEF3E0] aria-selected:[&_svg]:text-[#FEF3E0]! cursor-pointer',
     );
 
     const rowClassName = clsx(
