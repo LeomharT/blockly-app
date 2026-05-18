@@ -1,5 +1,4 @@
 import * as Blockly from 'blockly';
-import clsx from 'clsx';
 
 export class CustomCategory extends Blockly.ToolboxCategory {
   constructor(
@@ -21,19 +20,15 @@ export class CustomCategory extends Blockly.ToolboxCategory {
 
   /** @override */
   protected makeDefaultCssConfig_(): Blockly.ToolboxCategory.CssConfig {
-    const className = clsx(
-      'aria-selected:text-[#FEF3E0] aria-selected:[&_svg]:text-[#FEF3E0]! cursor-pointer',
-    );
-
-    const rowClassName = clsx(
-      'h-10 text-lg flex items-center transition-colors duration-200',
-    );
+    const className = {
+      row: 'h-10 text-lg flex items-center transition-colors duration-200',
+      container: 'aria-selected:text-[#FEF3E0] aria-selected:[&_svg]:text-[#FEF3E0]! cursor-pointer',
+      rowcontentcontainer: 'flex items-center',
+    };
 
     return {
       ...super.makeDefaultCssConfig_(),
-      container: className,
-      row: rowClassName,
-      rowcontentcontainer: clsx('flex items-center'),
+      ...className,
     };
   }
 
@@ -58,8 +53,7 @@ export class CustomCategory extends Blockly.ToolboxCategory {
 
   /** @override */
   protected createLabelDom_(name: string): Element {
-    const className =
-      'text-lg font-medium text-[1.15rem] transition-colors duration-200';
+    const className = 'text-lg font-medium text-[1.15rem] transition-colors duration-200';
 
     const label = document.createElement('span');
     label.innerText = name;
