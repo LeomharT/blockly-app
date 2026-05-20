@@ -10,6 +10,7 @@ Blockly.Blocks[BLOCK_TYPES.MAIN] = {
     this.setInputsInline(true);
     this.setDeletable(false);
     this.setEditable(false);
+    this.setMovable(false);
     this.setColour(COLOR);
   },
 };

@@ -13,4 +13,13 @@ svg[display='none'] {
 
 .blocklyToolbox {
   width: 200px;
+  background-color: var(--sidebar);
+}
+
+.blocklyFlyoutBackground {
+  fill: var(--sidebar-accent);
+}
+
+.blocklyMainBackground {
+  stroke: none;
 }

@@ -2,14 +2,21 @@ import { CustomCategory } from '@/core/category';
 import { toolbox } from '@/core/toolbox';
 import * as Blockly from 'blockly';
 import { pythonGenerator } from 'blockly/python';
+import { EditorView } from 'codemirror';
 import { useEffect, useRef } from 'react';
 import '../blocks/index';
 import '../generator/index';
 import AppHeader from './AppHeader';
 import AppSidebar from './AppSidebar';
+import { AppContext } from './context';
 
 export default function App() {
   const workspace = useRef<Blockly.Workspace>(null);
+  const editor = useRef<EditorView>(null);
+
+  function setEditor(_editor: EditorView) {
+    editor.current = _editor;
+  }
 
   useEffect(() => {
     // Create the definition.
@@ -76,7 +83,15 @@ export default function App() {
 
       if (workspace.current) {
         const code = pythonGenerator.workspaceToCode(workspace.current);
-        console.log(code);
+        if (editor.current) {
+          editor.current.dispatch({
+            changes: {
+              from: 0,
+              to: editor.current.state.doc.length,
+              insert: code,
+            },
+          });
+        }
       }
     });
 
@@ -86,12 +101,14 @@ export default function App() {
   }, []);
 
   return (
-    <div className='h-dvh'>
-      <AppHeader />
-      <main className='h-[calc(100vh-64px)] flex flex-row'>
-        <div id='blocklyDiv' className='w-full shrink'></div>
-        <AppSidebar />
-      </main>
-    </div>
+    <AppContext.Provider value={{ workspace, editor, setEditor }}>
+      <div className='h-dvh'>
+        <AppHeader />
+        <main className='h-[calc(100vh-64px)] flex flex-row'>
+          <div id='blocklyDiv' className='w-full shrink'></div>
+          <AppSidebar />
+        </main>
+      </div>
+    </AppContext.Provider>
   );
 }
