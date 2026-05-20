@@ -1,3 +1,4 @@
+import { BLOCK_TYPES } from '@/constants/blockTypes';
 import * as Blockly from 'blockly';
 
 export const toolbox: Blockly.BlocklyOptions['toolbox'] = {
@@ -11,7 +12,8 @@ export const toolbox: Blockly.BlocklyOptions['toolbox'] = {
       contents: [
         { kind: 'label', text: 'Logic' },
         { kind: 'block', type: 'my_custom_block' },
-        { kind: 'block', type: '__main__' },
+        { kind: 'block', type: BLOCK_TYPES.MAIN },
+        { kind: 'block', type: BLOCK_TYPES.TRY_CATCH },
       ],
     },
     {

@@ -1,0 +1,18 @@
+import { BLOCK_TYPES } from '@/constants/blockTypes';
+import { pythonGenerator } from 'blockly/python';
+
+pythonGenerator.forBlock[BLOCK_TYPES.MAIN] = function (block, generator) {
+  const statements = generator.statementToCode(block, '__main__');
+  return `if __name__ == "__main__":\n${statements || pythonGenerator.PASS}`;
+};
+
+pythonGenerator.forBlock[BLOCK_TYPES.TRY_CATCH] = function (block) {
+  const tryBranch = pythonGenerator.statementToCode(block, 'TRY') || '    pass\n';
+  const catchBranch = pythonGenerator.statementToCode(block, 'CATCH') || '    pass\n';
+
+  const code = `try:
+${tryBranch}except Exception as e:
+${catchBranch}`;
+
+  return code;
+};

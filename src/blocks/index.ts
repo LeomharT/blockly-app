@@ -1,1 +1,1 @@
-import './python/main';
+import './python/sprites';

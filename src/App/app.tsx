@@ -2,11 +2,15 @@ import { CustomCategory } from '@/core/category';
 import { toolbox } from '@/core/toolbox';
 import * as Blockly from 'blockly';
 import { pythonGenerator } from 'blockly/python';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import '../blocks/index';
 import '../generator/index';
+import AppHeader from './AppHeader';
+import AppSidebar from './AppSidebar';
 
 export default function App() {
+  const workspace = useRef<Blockly.Workspace>(null);
+
   useEffect(() => {
     // Create the definition.
     const definitions = Blockly.common.createBlockDefinitionsFromJsonArray([
@@ -45,7 +49,7 @@ export default function App() {
       true,
     );
 
-    const workspace = Blockly.inject('blocklyDiv', {
+    workspace.current = Blockly.inject('blocklyDiv', {
       toolbox,
       renderer: 'zelos',
       trashcan: false,
@@ -64,20 +68,30 @@ export default function App() {
           ],
         },
       },
-      workspace,
+      workspace.current,
     );
 
-    workspace.addChangeListener((e) => {
+    workspace.current.addChangeListener((e) => {
       if (e.isUiEvent) return;
 
-      const code = pythonGenerator.workspaceToCode(workspace);
-      console.log(code);
+      if (workspace.current) {
+        const code = pythonGenerator.workspaceToCode(workspace.current);
+        console.log(code);
+      }
     });
 
     return () => {
-      workspace.dispose();
+      workspace.current?.dispose();
     };
   }, []);
 
-  return <div id='blocklyDiv' className='h-dvh'></div>;
+  return (
+    <div className='h-dvh'>
+      <AppHeader />
+      <main className='h-[calc(100vh-64px)] flex flex-row'>
+        <div id='blocklyDiv' className='w-full shrink'></div>
+        <AppSidebar />
+      </main>
+    </div>
+  );
 }
