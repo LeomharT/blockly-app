@@ -7,8 +7,7 @@ import { AppContext } from './context';
 
 const theme = EditorView.theme({
   '&': {
-    fontSize: '18px',
-    outline: 'none',
+    outline: 'none !important',
     height: '100%',
   },
 });

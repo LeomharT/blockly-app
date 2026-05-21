@@ -79,6 +79,31 @@ export default function App() {
     );
 
     workspace.current.addChangeListener((e) => {
+      if (!workspace.current) return;
+
+      pythonGenerator.init(workspace.current);
+
+      if (e instanceof Blockly.Events.Selected) {
+        editor.current!.dispatch({ selection: { anchor: 0, head: 0 } });
+
+        const block = Blockly.common.getSelected();
+        if (block) {
+          const code = pythonGenerator.blockToCode(block as unknown as Blockly.Block) as string;
+          const fullCode = editor.current!.state.doc.toString();
+
+          const from = fullCode.indexOf(code);
+          const to = from + code.length;
+
+          if (from >= 0) {
+            editor.current!.dispatch({
+              selection: { anchor: from, head: to },
+            });
+          }
+        }
+
+        return;
+      }
+
       if (e.isUiEvent) return;
 
       if (workspace.current) {

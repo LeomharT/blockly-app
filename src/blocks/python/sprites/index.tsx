@@ -17,12 +17,17 @@ Blockly.Blocks[BLOCK_TYPES.MAIN] = {
 
 Blockly.Blocks[BLOCK_TYPES.TRY_CATCH] = {
   init(this: Blockly.Block) {
-    this.appendDummyInput().appendField('try');
+    this.appendDummyInput()
+      .appendField('try')
+      .appendField(new Blockly.FieldImage('/plus.svg', 20, 20));
     this.appendStatementInput('TRY').setCheck(null);
+
     this.appendDummyInput().appendField('catch');
     this.appendStatementInput('CATCH').setCheck(null);
+
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
+
     this.setColour(COLOR);
   },
 };
