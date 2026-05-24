@@ -10,7 +10,20 @@ export const toolbox: Blockly.BlocklyOptions['toolbox'] = {
       name: 'Sprites',
       cssconfig: { icon: 'fa-brands fa-codepen' },
       contents: [
-        { kind: 'label', text: 'Sprites' },
+        {
+          kind: 'block',
+          type: 'math_number',
+          fields: {
+            NUM: 42,
+          },
+        },
+        {
+          kind: 'label',
+          text: 'Sprites123',
+          icons: {
+            icon: 'fa-brands fa-codepen',
+          },
+        },
         { kind: 'block', type: 'my_custom_block' },
         { kind: 'block', type: BLOCK_TYPES.MAIN },
         { kind: 'block', type: BLOCK_TYPES.TRY_CATCH },

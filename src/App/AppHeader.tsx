@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { pythonGenerator } from 'blockly/python';
 import { useContext } from 'react';
-import { AppContext } from './context';
+import { AppContext } from './context.ts';
 
 export default function AppHeader() {
   const { workspace } = useContext(AppContext);

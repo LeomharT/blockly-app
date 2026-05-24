@@ -1,3 +1,6 @@
+import AppHeader from '@/App/AppHeader';
+import AppSidebar from '@/App/AppSidebar';
+import { AppContext } from '@/App/context';
 import { CustomCategory } from '@/core/category';
 import { toolbox } from '@/core/toolbox';
 import * as Blockly from 'blockly';
@@ -6,9 +9,6 @@ import { EditorView } from 'codemirror';
 import { useEffect, useRef } from 'react';
 import '../blocks/index';
 import '../generator/index';
-import AppHeader from './AppHeader';
-import AppSidebar from './AppSidebar';
-import { AppContext } from './context';
 
 export default function App() {
   const workspace = useRef<Blockly.Workspace>(null);
