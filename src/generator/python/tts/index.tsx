@@ -5,6 +5,11 @@ pythonGenerator.forBlock[TTS_BLOCK_TYPES.TTS_CLIENT] = function (block, generato
   const statement = generator.statementToCode(block, TTS_STATEMENT_INPUT.TTS_STATEMENT);
   const strings = statement.split('\n').filter(Boolean);
 
+  (generator as PythonGenerator & { definitions_: Record<string, string> }).definitions_['import_sys'] =
+    'import sys\nsys.path.append("..")';
+  (generator as PythonGenerator & { definitions_: Record<string, string> }).definitions_['import_tts_client'] =
+    'import tts_client';
+
   return `tts_client.tts_synthesize(
 ${strings.join(',\n') || pythonGenerator.PASS.replace('\n', '')}
 )
