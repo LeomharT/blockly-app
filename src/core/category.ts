@@ -16,6 +16,28 @@ export class CustomCategory extends Blockly.ToolboxCategory {
     if (this.labelDom_ instanceof HTMLSpanElement) {
       this.labelDom_.style.color = isSelected ? '#FEF3E0' : this.colour_;
     }
+
+    requestAnimationFrame(() => {
+      const label = document.querySelector('.blocklyFlyoutLabel') as SVGGElement | null;
+      const text = label?.querySelector('text') as SVGTextElement | null;
+
+      if (text) {
+        text.style.fill = this.colour_;
+      }
+
+      const copy = (label?.querySelector('#blocklyFlyoutLabelName') || text?.cloneNode()) as HTMLDivElement;
+
+      if (copy) {
+        copy.id = 'blocklyFlyoutLabelName';
+        copy.textContent = this.name_;
+        copy.style.fontSize = '22px';
+        copy.style.fill = '#575E75';
+        copy.setAttribute('x', '32');
+        copy.setAttribute('text-anchor', 'start');
+
+        label?.append(copy);
+      }
+    });
   }
 
   /** @override */

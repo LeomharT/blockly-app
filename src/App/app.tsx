@@ -1,8 +1,7 @@
-import AppHeader from '@/App/AppHeader';
-import AppSidebar from '@/App/AppSidebar';
-import { AppContext } from '@/App/context';
+import AppHeader from '@/app/AppHeader';
+import AppSidebar from '@/app/AppSidebar';
+import { AppContext } from '@/app/context';
 import { CustomCategory } from '@/core/category';
-import { IconLabel } from '@/core/iconLabel';
 import { toolbox } from '@/core/toolbox';
 import * as Blockly from 'blockly';
 import { pythonGenerator } from 'blockly/python';
@@ -56,8 +55,6 @@ export default function App() {
       CustomCategory,
       true,
     );
-
-    Blockly.registry.register(Blockly.registry.Type.FLYOUT_INFLATER, 'title', IconLabel, true);
 
     workspace.current = Blockly.inject('blocklyDiv', {
       toolbox,

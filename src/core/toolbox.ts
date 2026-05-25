@@ -10,11 +10,11 @@ export const toolbox: Blockly.BlocklyOptions['toolbox'] = {
       name: 'Sprites',
       cssconfig: { icon: 'fa-brands fa-codepen' },
       contents: [
-        { kind: 'label', text: 'Sprites' },
         {
-          kind: 'title',
-          text: 'Sprites',
-        },
+          kind: 'label',
+          text: '\uf1cb',
+          'web-css': 'labelicon',
+        } as Blockly.utils.toolbox.ToolboxItemInfo,
         { kind: 'block', type: 'my_custom_block' },
         { kind: 'block', type: BLOCK_TYPES.MAIN },
         { kind: 'block', type: BLOCK_TYPES.TRY_CATCH },
@@ -26,6 +26,11 @@ export const toolbox: Blockly.BlocklyOptions['toolbox'] = {
       name: 'Category2',
       cssconfig: { icon: 'fa-solid fa-music' },
       contents: [
+        {
+          kind: 'label',
+          text: '\uf1cb',
+          'web-css': 'labelicon',
+        } as Blockly.utils.toolbox.ToolboxItemInfo,
         {
           kind: 'block',
           type: 'my_custom_block',

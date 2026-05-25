@@ -23,3 +23,9 @@ svg[display='none'] {
 .blocklyMainBackground {
   stroke: none;
 }
+
+.blocklyFlyoutLabelText:nth-of-type(1) {
+  font-size: 24px !important;
+  font-weight: 900 !important;
+  font-family: 'Font Awesome 7 Free', 'Font Awesome 7 Brands' !important;
+}
