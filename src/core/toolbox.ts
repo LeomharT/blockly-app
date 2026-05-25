@@ -1,4 +1,5 @@
 import { BLOCK_TYPES } from '@/constants/blockTypes';
+import { TTS_BLOCK_TYPES } from '@/constants/tts.block';
 import * as Blockly from 'blockly';
 
 export const toolbox: Blockly.BlocklyOptions['toolbox'] = {
@@ -24,22 +25,15 @@ export const toolbox: Blockly.BlocklyOptions['toolbox'] = {
     {
       kind: 'category',
       colour: '130',
-      name: 'Category2',
-      cssconfig: { icon: 'fa-solid fa-music' },
+      name: 'Voice',
+      cssconfig: { icon: 'fa-solid fa-headphones' },
       contents: [
         {
           kind: 'label',
           text: '\uf001',
           'web-class': 'labelicon',
         } as Blockly.utils.toolbox.ToolboxItemInfo,
-        {
-          kind: 'block',
-          type: 'my_custom_block',
-        },
-        {
-          kind: 'block',
-          type: '__main__',
-        },
+        { kind: 'block', type: TTS_BLOCK_TYPES.VOICE },
       ],
     },
   ],
