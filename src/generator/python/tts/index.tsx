@@ -39,5 +39,5 @@ pythonGenerator.forBlock[TTS_BLOCK_TYPES.TTS_TEXT] = function (block, generator)
 
 pythonGenerator.forBlock[TTS_BLOCK_TYPES.INSTRUCTION] = function (block) {
   const instruction = block.getFieldValue(TTS_FIELD.INSTRUCTION);
-  return `instruction='${instruction}'\n`;
+  return `instruction='你说话的情感是${instruction}。'\n`;
 };
