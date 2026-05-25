@@ -1,5 +1,5 @@
 import { BLOCK_TYPES } from '@/constants/blockTypes';
-import { TTS_BLOCK_TYPES, TTS_FIELD } from '@/constants/tts.block';
+import { TTS_BLOCK_TYPES, TTS_FIELD, TTS_INPUT } from '@/constants/tts.block';
 import * as Blockly from 'blockly';
 
 export const toolbox: Blockly.BlocklyOptions['toolbox'] = {
@@ -25,7 +25,7 @@ export const toolbox: Blockly.BlocklyOptions['toolbox'] = {
     {
       kind: 'category',
       colour: '130',
-      name: 'Voice',
+      name: 'Text To Speech',
       cssconfig: { icon: 'fa-solid fa-headphones' },
       contents: [
         {
@@ -44,8 +44,26 @@ export const toolbox: Blockly.BlocklyOptions['toolbox'] = {
           },
         },
         { kind: 'label', text: 'voice' },
-        { kind: 'block', type: TTS_BLOCK_TYPES.VOICE, inputs: {} },
-        { kind: 'block', type: 'variables_get' },
+        { kind: 'block', type: TTS_BLOCK_TYPES.VOICE },
+        { kind: 'label', text: 'speech' },
+        { kind: 'block', type: TTS_BLOCK_TYPES.SPEECH },
+        { kind: 'label', text: 'text' },
+        {
+          kind: 'block',
+          type: TTS_BLOCK_TYPES.TTS_TEXT,
+          inputs: {
+            [TTS_INPUT.TTS_TEXT_INPUT]: {
+              block: {
+                type: 'text',
+                fields: {
+                  TEXT: '请在此输入需要转为语音的文本',
+                },
+              },
+            },
+          },
+        },
+        { kind: 'label', text: 'instruction' },
+        { kind: 'block', type: TTS_BLOCK_TYPES.INSTRUCTION },
       ],
     },
   ],
