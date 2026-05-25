@@ -1,5 +1,5 @@
 import { BLOCK_TYPES } from '@/constants/blockTypes';
-import { TTS_BLOCK_TYPES } from '@/constants/tts.block';
+import { TTS_BLOCK_TYPES, TTS_FIELD } from '@/constants/tts.block';
 import * as Blockly from 'blockly';
 
 export const toolbox: Blockly.BlocklyOptions['toolbox'] = {
@@ -33,7 +33,19 @@ export const toolbox: Blockly.BlocklyOptions['toolbox'] = {
           text: '\uf001',
           'web-class': 'labelicon',
         } as Blockly.utils.toolbox.ToolboxItemInfo,
-        { kind: 'block', type: TTS_BLOCK_TYPES.VOICE },
+        { kind: 'label', text: 'tts_client' },
+        { kind: 'block', type: TTS_BLOCK_TYPES.TTS_CLIENT },
+        { kind: 'label', text: 'token' },
+        {
+          kind: 'block',
+          type: TTS_BLOCK_TYPES.ACCESS_TOKEN,
+          fields: {
+            [TTS_FIELD.TOKEN]: '请在此处输入你的Token',
+          },
+        },
+        { kind: 'label', text: 'voice' },
+        { kind: 'block', type: TTS_BLOCK_TYPES.VOICE, inputs: {} },
+        { kind: 'block', type: 'variables_get' },
       ],
     },
   ],
