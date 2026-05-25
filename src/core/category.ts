@@ -19,6 +19,9 @@ export class CustomCategory extends Blockly.ToolboxCategory {
 
     requestAnimationFrame(() => {
       const label = document.querySelector('.blocklyFlyoutLabel') as SVGGElement | null;
+
+      console.log(label);
+
       const text = label?.querySelector('text') as SVGTextElement | null;
       if (text) text.style.fill = this.colour_;
 

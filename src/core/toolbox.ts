@@ -13,10 +13,11 @@ export const toolbox: Blockly.BlocklyOptions['toolbox'] = {
         {
           kind: 'label',
           text: '\uf1cb',
-          'web-css': 'labelicon',
+          'web-class': 'labelicon',
         } as Blockly.utils.toolbox.ToolboxItemInfo,
         { kind: 'block', type: 'my_custom_block' },
         { kind: 'block', type: BLOCK_TYPES.MAIN },
+        { kind: 'label', text: 'Hhhhhahahah' },
         { kind: 'block', type: BLOCK_TYPES.TRY_CATCH },
       ],
     },
@@ -28,8 +29,8 @@ export const toolbox: Blockly.BlocklyOptions['toolbox'] = {
       contents: [
         {
           kind: 'label',
-          text: '\uf1cb',
-          'web-css': 'labelicon',
+          text: '\uf001',
+          'web-class': 'labelicon',
         } as Blockly.utils.toolbox.ToolboxItemInfo,
         {
           kind: 'block',
