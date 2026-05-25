@@ -20,13 +20,10 @@ export class CustomCategory extends Blockly.ToolboxCategory {
     requestAnimationFrame(() => {
       const label = document.querySelector('.blocklyFlyoutLabel') as SVGGElement | null;
 
-      console.log(label);
-
       const text = label?.querySelector('text') as SVGTextElement | null;
       if (text) text.style.fill = this.colour_;
 
       const copy = (label?.querySelector('#blocklyFlyoutLabelName') || text?.cloneNode()) as HTMLDivElement;
-
       if (!copy) return;
 
       copy.id = 'blocklyFlyoutLabelName';
@@ -36,6 +33,7 @@ export class CustomCategory extends Blockly.ToolboxCategory {
       copy.style.fill = '#575E75';
 
       copy.setAttribute('x', '32');
+      copy.setAttribute('y', '18');
       copy.setAttribute('text-anchor', 'start');
 
       label?.append(copy);
