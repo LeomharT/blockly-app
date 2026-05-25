@@ -1,10 +1,13 @@
 import { TTS_BLOCK_TYPES, TTS_FIELD, TTS_INPUT, TTS_STATEMENT_INPUT } from '@/constants/tts.block';
-import { pythonGenerator } from 'blockly/python';
+import { PythonGenerator, pythonGenerator } from 'blockly/python';
 
 pythonGenerator.forBlock[TTS_BLOCK_TYPES.TTS_CLIENT] = function (block, generator) {
   const statement = generator.statementToCode(block, TTS_STATEMENT_INPUT.TTS_STATEMENT);
+  const strings = statement.split('\n').filter(Boolean);
+
   return `tts_client.tts_synthesize(
-${statement || pythonGenerator.PASS})
+${strings.join(',\n') || pythonGenerator.PASS.replace('\n', '')}
+)
 `;
 };
 
@@ -18,7 +21,10 @@ pythonGenerator.forBlock[TTS_BLOCK_TYPES.ACCESS_TOKEN] = function (block, genera
   const variableName = generator.getVariableName(variableId);
   const token = block.getFieldValue(TTS_FIELD.TOKEN);
 
-  return `${variableName}='${token}'\n`;
+  (generator as PythonGenerator & { definitions_: Record<string, string> }).definitions_['variables'] =
+    `ACCESS_TOKEN = '${token}'`;
+
+  return `access_token=${variableName}\n`;
 };
 
 pythonGenerator.forBlock[TTS_BLOCK_TYPES.SPEECH] = function (block) {

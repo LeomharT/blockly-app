@@ -23,7 +23,7 @@ Blockly.Blocks[TTS_BLOCK_TYPES.ACCESS_TOKEN] = {
   init: function (this: Blockly.Block) {
     this.appendDummyInput()
       .appendField('设置访问令牌: ')
-      .appendField(new Blockly.FieldVariable('access_token'), TTS_FIELD.TOKEN_VARIABLE)
+      .appendField(new Blockly.FieldVariable('ACCESS_TOKEN'), TTS_FIELD.TOKEN_VARIABLE)
       .appendField('=')
       .appendField(new Blockly.FieldTextInput(''), TTS_FIELD.TOKEN);
 
