@@ -18,7 +18,7 @@ ${strings.join(',\n') || pythonGenerator.PASS.replace('\n', '')}
 
 pythonGenerator.forBlock[TTS_BLOCK_TYPES.VOICE] = function (block) {
   const voice = block.getFieldValue(TTS_FIELD.VOICE);
-  return `voide='${voice}'\n`;
+  return `voice='${voice}'\n`;
 };
 
 pythonGenerator.forBlock[TTS_BLOCK_TYPES.ACCESS_TOKEN] = function (block, generator) {
