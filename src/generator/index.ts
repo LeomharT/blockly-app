@@ -1,2 +1,2 @@
-import './python/sprites';
+import './python/logic';
 import './python/tts';
