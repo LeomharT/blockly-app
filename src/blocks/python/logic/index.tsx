@@ -5,7 +5,7 @@ const COLOR = 290;
 
 type Block = Blockly.Block & Record<string, string>;
 
-type ExceptionBlock = Block & {
+export type ExceptionBlock = Block & {
   exceptionCount: number;
   addException: () => void;
   removeException: (index: number) => void;
@@ -45,7 +45,7 @@ Blockly.Blocks[BLOCK_TYPES.TRY_CATCH] = {
     const currentIdx = this.exceptionCount;
 
     this.appendDummyInput(`EXCEPT_LABEL_${currentIdx}`)
-      .appendField('except' + currentIdx)
+      .appendField('except')
       .appendField('                ')
       .appendField(
         new Blockly.FieldImage('/minus.svg', 24, 24, 'remove', () => {
@@ -60,5 +60,20 @@ Blockly.Blocks[BLOCK_TYPES.TRY_CATCH] = {
   removeException(this: ExceptionBlock, index: number) {
     if (this.getInput(`EXCEPT_LABEL_${index}`)) this.removeInput(`EXCEPT_LABEL_${index}`);
     if (this.getInput(`CATCH_${index}`)) this.removeInput(`CATCH_${index}`);
+  },
+  saveExtraState(this: ExceptionBlock) {
+    return {
+      exceptionCount: this.exceptionCount,
+    };
+  },
+  loadExtraState(this: ExceptionBlock, state) {
+    this.exceptionCount = state.exceptionCount || 0;
+    for (let i = 1; i <= this.exceptionCount; i++) {
+      this.appendDummyInput(`EXCEPT_LABEL_${i}`).appendField('except');
+      this.appendStatementInput(`CATCH_${i}`).setCheck(null);
+
+      this.moveInputBefore(`EXCEPT_LABEL_${i}`, 'CONTROLS');
+      this.moveInputBefore(`CATCH_${i}`, 'CONTROLS');
+    }
   },
 } as ExceptionBlock;
