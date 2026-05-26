@@ -47,6 +47,14 @@ const category_tts: Blockly.utils.toolbox.ToolboxItemInfo = {
   ],
 };
 
+const category_hd_desk_lamp: Blockly.utils.toolbox.ToolboxItemInfo = {
+  kind: 'category',
+  colour: '190',
+  name: 'Desk Lamp',
+  cssconfig: { icon: 'fa-regular fa-lightbulb' },
+  contents: [],
+};
+
 export const toolbox: Blockly.BlocklyOptions['toolbox'] = {
   kind: 'categoryToolbox',
   contents: [
@@ -68,5 +76,6 @@ export const toolbox: Blockly.BlocklyOptions['toolbox'] = {
       ],
     },
     category_tts,
+    category_hd_desk_lamp,
   ],
 };

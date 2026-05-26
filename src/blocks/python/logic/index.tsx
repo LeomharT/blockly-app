@@ -60,6 +60,7 @@ Blockly.Blocks[BLOCK_TYPES.TRY_CATCH] = {
   removeException(this: ExceptionBlock, index: number) {
     if (this.getInput(`EXCEPT_LABEL_${index}`)) this.removeInput(`EXCEPT_LABEL_${index}`);
     if (this.getInput(`CATCH_${index}`)) this.removeInput(`CATCH_${index}`);
+    this.exceptionCount--;
   },
   saveExtraState(this: ExceptionBlock) {
     return {
