@@ -78,3 +78,11 @@ Blockly.Blocks[BLOCK_TYPES.TRY_CATCH] = {
     }
   },
 } as ExceptionBlock;
+
+Blockly.Blocks[BLOCK_TYPES.DEFINITION] = {
+  init(this: Block) {
+    this.setNextStatement(true);
+    this.setPreviousStatement(false);
+    this.setColour(COLOR);
+  },
+} as Block;
