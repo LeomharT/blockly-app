@@ -15,3 +15,11 @@ ${tryBranch}except Exception as e:
 
   return code;
 };
+
+pythonGenerator.forBlock[BLOCK_TYPES.WITH_CONTENT] = function (block, generator) {
+  const title = block.getFieldValue('title');
+  const statements = generator.statementToCode(block, 'content');
+
+  return `${title}:
+${statements}`;
+};

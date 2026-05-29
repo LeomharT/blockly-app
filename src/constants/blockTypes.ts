@@ -3,4 +3,5 @@ export const BLOCK_TYPES = {
   TRY_CATCH: 'try_catch',
   IF: 'if',
   DEFINITION: 'definition',
+  WITH_CONTENT: 'with_content',
 } as const;

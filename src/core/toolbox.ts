@@ -44,7 +44,9 @@ export const toolbox: Blockly.BlocklyOptions['toolbox'] = {
         { kind: 'block', type: BLOCK_TYPES.MAIN },
         { kind: 'block', type: BLOCK_TYPES.TRY_CATCH },
         { kind: 'block', type: BLOCK_TYPES.DEFINITION },
+
         { kind: 'block', type: 'logic_boolean', colour: '290' },
+        { kind: 'block', type: BLOCK_TYPES.WITH_CONTENT },
       ],
     },
     category_tts,

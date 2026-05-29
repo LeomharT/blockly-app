@@ -86,3 +86,15 @@ Blockly.Blocks[BLOCK_TYPES.DEFINITION] = {
     this.setColour(COLOR);
   },
 } as Block;
+
+Blockly.Blocks[BLOCK_TYPES.WITH_CONTENT] = {
+  init(this: Block) {
+    this.appendValueInput('title');
+    this.appendDummyInput().appendField('      ').appendField(':');
+    this.appendStatementInput('content');
+
+    this.setNextStatement(true);
+    this.setPreviousStatement(true);
+    this.setColour(COLOR);
+  },
+} as Block;
